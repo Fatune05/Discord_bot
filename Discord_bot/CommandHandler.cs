@@ -29,6 +29,7 @@ namespace Discord_bot
             if (msg.HasStringPrefix("l!", ref argPos))
             {
                 Console.WriteLine(context.User + " " + msg);
+                var speech = new SocketCommandContext(_client, msg);
                 var resultMod = await _service.ExecuteAsync(context, argPos, null);
                 if (!resultMod.IsSuccess)
                 {
@@ -39,14 +40,14 @@ namespace Discord_bot
                     }
                 }
             }
-            if (msg.Content.Contains("Лаура") || msg.Content.Contains("лаура"))
-            {
-                var speech = new Speech.SpeechRecognition(_client);
-                
-                Console.WriteLine(context.User + " " + msg);
-                await context.Channel.SendMessageAsync("Я понимаю тебя");
-                await _service.ExecuteAsync(context, argPos, null);
-            }
+            //if (msg.Content.Contains("Лаура") || msg.Content.Contains("лаура"))
+            //{
+            //    var speech = new Speech.SpeechRecognition(_client);
+
+            //    Console.WriteLine(context.User + " " + msg);
+            //    await context.Channel.SendMessageAsync("Я понимаю тебя");
+            //    await _service.ExecuteAsync(context, argPos, null);
+            //}
         }
     }
 }
