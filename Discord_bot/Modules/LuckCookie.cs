@@ -15,7 +15,7 @@ namespace Discord_bot.Modules
         [Command("luckcookie")]
         [Alias("lc", "LC", "LuckCookie", "Luckcookie")]
         [Summary("Съешь печенье")]
-        public async Task Test_C()
+        public async Task CookieC()
         {
             Console.WriteLine("Вызвана команда печенья удачи");
             Random rand = new Random();

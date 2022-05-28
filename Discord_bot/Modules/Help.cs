@@ -7,7 +7,7 @@ namespace Discord_bot.Modules
     public class Help : ModuleBase<SocketCommandContext>
     {
         [Command("help")]
-        public async Task Test_C()
+        public async Task HelpC()
         {
             string[] helpStr = new string[10];
             helpStr[0] = "l!clear <кол.сообщений> - Удалить выбранное количество сообщений";

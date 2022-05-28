@@ -11,7 +11,7 @@ namespace Discord_bot.Modules
     {
         static string player1;
         static string player2;
-        static string[] title = File.ReadAllLines(@"C:\Users\Ivan\Documents\Visual Studio 2015\Projects\Discord_bot\Discord_bot\Titles.txt");
+        static string[] title = File.ReadAllLines(@"C:\Users\Fatune\source\repos\Fatune05\Discord_bot\Discord_bot\Titles.txt");
         static string Title1;
         static string Title2;
         static string whosTurn;

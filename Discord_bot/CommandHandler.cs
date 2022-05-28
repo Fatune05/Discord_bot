@@ -8,28 +8,36 @@ namespace Discord_bot
 {
     public class CommandHandler
     {
-        public DiscordSocketClient _client;
-        private CommandService _service;
+        private readonly DiscordSocketClient _client;
+        private readonly CommandService _commands;
+        private readonly IServiceProvider _services;
 
-        public CommandHandler(DiscordSocketClient client)
+        public CommandHandler(DiscordSocketClient client, CommandService commands, IServiceProvider services)
         {
             _client = client;
-            _service = new CommandService();
+            _commands = commands;
+            _services = services;
+        }
+        public async Task InstallCommandsAsync()
+        {
             Assembly asm = Assembly.GetEntryAssembly();
-            _service.AddModulesAsync(asm, null);
             _client.MessageReceived += HandleCommandAsync;
+            await _commands.AddModulesAsync(asm, _services);
         }
 
         private async Task HandleCommandAsync(SocketMessage s)
         {
             var msg = s as SocketUserMessage;
-            if (msg == null) return;
+            if (msg == null || msg.Author.IsBot)
+            {
+                return;
+            }
             var context = new SocketCommandContext(_client, msg);
             int argPos = 0;
             if (msg.HasStringPrefix("l!", ref argPos))
-            {
+            {  
                 Console.WriteLine(context.User + " " + msg);
-                var resultMod = await _service.ExecuteAsync(context, argPos, null);
+                var resultMod = await _commands.ExecuteAsync(context, argPos, _services);
                 if (!resultMod.IsSuccess)
                 {
                     Console.WriteLine(" (" + resultMod.ErrorReason + ")");
@@ -39,14 +47,14 @@ namespace Discord_bot
                     }
                 }
             }
-            if (msg.Content.Contains("Лаура") || msg.Content.Contains("лаура"))
-            {
-                var speech = new Speech.SpeechRecognition(_client);
-                
-                Console.WriteLine(context.User + " " + msg);
-                await context.Channel.SendMessageAsync("Я понимаю тебя");
-                await _service.ExecuteAsync(context, argPos, null);
-            }
+            //if (msg.Content.Contains("Лаура") || msg.Content.Contains("лаура"))
+            //{
+            //    var speech = new Speech.SpeechRecognition(_client);
+
+            //    Console.WriteLine(context.User + " " + msg);
+            //    await context.Channel.SendMessageAsync("Я понимаю тебя");
+            //    await _service.ExecuteAsync(context, argPos, null);
+            //}
         }
     }
 }

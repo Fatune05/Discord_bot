@@ -166,7 +166,6 @@
     <Compile Include="Modules\Fight.cs" />
     <Compile Include="Modules\Help.cs" />
     <Compile Include="Modules\Laura.cs" />
-    <Compile Include="Modules\Love.cs" />
     <Compile Include="Modules\Play.cs" />
     <Compile Include="Modules\LuckCookie.cs" />
     <Compile Include="Modules\Test.cs" />
@@ -176,7 +175,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Characters.settings</DependentUpon>
     </Compile>
-    <Compile Include="Speech\SpeechRecognition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -199,6 +197,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Speech\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
