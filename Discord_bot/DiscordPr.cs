@@ -34,7 +34,7 @@ namespace Discord_bot
             });
             Console.WriteLine("Авторизация...");
             _client.Log += Log;
-            await _client.LoginAsync(TokenType.Bot, "MzQ1Nzk5MjQ1Mjc5OTIwMTI5.DHBoIQ.598hvkFIu2-NaLmGG3MjF-fKUcM");
+            await _client.LoginAsync(TokenType.Bot, "HereIsYourToken");
             Console.WriteLine("Завершение авторизации");
             await _client.StartAsync();
             string teg = "for own config"; //your \"l!help\"

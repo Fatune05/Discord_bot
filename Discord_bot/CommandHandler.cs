@@ -47,6 +47,7 @@ namespace Discord_bot
                     }
                 }
             }
+            //Пробовал сделать распознавание вне команд, но нужно модифицировать обработчик
             //if (msg.Content.Contains("Лаура") || msg.Content.Contains("лаура"))
             //{
             //    var speech = new Speech.SpeechRecognition(_client);
