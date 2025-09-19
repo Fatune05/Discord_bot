@@ -27,6 +27,7 @@ namespace Discord_bot.Modules
         [Summary("Начать бой с @Пользователь (example: !fight Fatune")]
         public async Task Battle(IUser user)
         {
+            //Описания внутри кода
             //try
             //{
                 
